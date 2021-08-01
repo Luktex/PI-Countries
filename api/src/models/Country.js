@@ -31,11 +31,11 @@ module.exports = (sequelize) => {
       allowNull: true
     },
     area: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: true
     },
     population: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: true
     },
     createdInDb: {
@@ -43,5 +43,9 @@ module.exports = (sequelize) => {
       allowNull: false,
       defaultValue: true
   },
+  numericCode: {
+    type: DataTypes.STRING,
+    allowNull: true,
+},
   });
 };
