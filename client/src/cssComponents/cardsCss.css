@@ -1,4 +1,6 @@
-.cards {
-    border-color: black;
-    border-radius: 24%;
+.flag {
+    border-width: 10px;
+    border-style: solid;
+    border-color: darkgray;
+    box-shadow: 352px 0 darkgray inset;
 }

@@ -1,3 +1,17 @@
 .principal {
-    background-image: url("https://previews.123rf.com/images/baks/baks1205/baks120500004/13601459-banderas-del-mundo-esfera-ilustraci%C3%B3n-vectorial.jpg");
+    background-image: url("https://i.ibb.co/HzR8x4S/59052301-viajar-por-todo-el-mundo-poster-alquiler-turismo-tierra-del-mundo-viaje-global-ilustraci-n.jpg");
 }
+.number {
+    border-width: 8px;
+    border-style: solid;
+    border-color: lightblue;
+    box-shadow: 20px 0 lightblue inset;
+    
+    
+}
+.paginado {
+    display: flex;
+    justify-content: center;
+}
+
+

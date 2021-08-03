@@ -11,3 +11,24 @@ export function getCountries(){
         })
     }
 };
+
+export function filterCountriesByRegion(payload){
+    return {
+        type: 'FILTER_BY_REGION',
+        payload
+    }
+}
+
+export function filterCreated(payload){
+    return {
+        type: 'FILTER_CREATED',
+        payload
+    }
+}
+
+export function orderByName(payload){
+    return {
+        type: 'ORDER_BY_NAME',
+        payload
+    }
+}
