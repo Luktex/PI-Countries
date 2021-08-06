@@ -3,13 +3,11 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    
 }
 .principal {
-    
-    
-    
-    
     background-image: url("https://i.ibb.co/HzR8x4S/59052301-viajar-por-todo-el-mundo-poster-alquiler-turismo-tierra-del-mundo-viaje-global-ilustraci-n.jpg");
+    
 }
 .number {
     border-width: 8px;

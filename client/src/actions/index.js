@@ -33,7 +33,32 @@ export function orderByName(payload){
     }
 }
 
+export function orderByPopu(payload){
+    return {
+        type: 'ORDER_BY_POPU',
+        payload
+    }
+}
 
+
+
+export function getActivity() {
+    return async function (dispatch) {
+        var info = await axios("http://localhost:3001/activity")
+
+        return dispatch({type: "GET_ACTIVITIES", payload: info.data})
+    }
+    
+}
+
+export function postCountry(payload) {
+    return async function (dispatch) {
+        const response = await axios.post("http://localhost:3001/activity", payload);
+        console.log(response)
+        return response
+
+    }
+}
 
 
 export function getNameCountries(name){

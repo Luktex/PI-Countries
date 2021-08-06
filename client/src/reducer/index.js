@@ -1,7 +1,8 @@
 
 const initialState = {
     countries: [],
-    allCountries: []
+    allCountries: [],
+    activities: []
 
 }
 
@@ -19,7 +20,11 @@ function rootReducer (state = initialState, action){
             ...state,
             countries: action.payload
         }
-
+        case 'GET_ACTIVITIES':
+            return {
+                ...state,
+                activities: action.payload
+            }
 
         case 'FILTER_BY_REGION':
             const allCountries = state.allCountries
@@ -29,12 +34,42 @@ function rootReducer (state = initialState, action){
                 countries: regionFiltered
 
             }
+            case "POST_COUNTRY":
+                return {
+                    ...state,
+                }
             case "FILTER_CREATED":
                 const statusFiltered2 = action.payload === 'created' ? state.allCountries.filter(el => el.createdInDb) : state.allCountries.filter(el => !el.createdInDb)
                 return {
                     ...state,
                     countries: action.payload === 'All' ? state.allCountries : statusFiltered2
                 }
+               
+                case 'ORDER_BY_POPU':
+                    let sortedArra = action.payload === 'popu' ?
+                        state.countries.sort(function (a, b) {
+                            if (a.population > b.population) {
+                                return 1;
+                            }
+                            if (b.population > a.population) {
+                                return -1;
+                            }
+                            return 0;
+                        }) :
+                        state.countries.sort(function (a, b) {
+                            if (a.population > b.population) {
+                                return -1;
+                            }
+                            if (b.population > a.popolation) {
+                                return 1;
+                            }
+                            return 0;
+                        })
+                    return {
+                        ...state,
+                        countries: sortedArra
+                    }
+
                 case 'ORDER_BY_NAME':
                     let sortedArr = action.payload === 'asc' ?
                         state.countries.sort(function (a, b) {

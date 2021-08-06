@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import { getCountries, filterCountriesByRegion, filterCreated, orderByName } from '../actions'
+import { getCountries, filterCountriesByRegion, filterCreated, orderByName, orderByPopu } from '../actions'
 import {Link} from 'react-router-dom'
 import Card from './Card'
 import '../cssComponents/HomeCss.css'
@@ -42,6 +42,13 @@ function handleFilterCreated(e){
     dispatch(filterCreated(e.target.value))
 }
 
+function handlePopu(e){
+    e.preventDefault();
+    dispatch(orderByPopu(e.target.value))
+    setCurrentPage(1);
+    setOrden(`Ordered ${e.target.value}`)
+}
+
 function handleSort (e){
     e.preventDefault();
     dispatch(orderByName(e.target.value))
@@ -51,7 +58,7 @@ function handleSort (e){
 
 return (
     <div className='principal'>
-        <Link to= '/countries'>Create a turistic activity</Link>
+        <Link to= '/activity'>Create a turistic activity</Link>
         <h1>Countries of the world</h1>
         <button onClick={e => {handleClick(e)}}>
             Reload countries
@@ -61,9 +68,9 @@ return (
                 <option value= 'asc'>Ascendente</option>
                 <option value= 'desc'>Descendente</option>
             </select>
-            <select>
-                <option value= 'alf'>Alfabetico</option>
-                <option value= 'popu'>Population</option>
+            <select onChange={e => handlePopu(e)}>
+                <option value= 'popu'>Population asc</option>
+                <option value= 'popu2'>Population desc</option>
                 <option value= 'act'>Turistic activity</option>
             </select>
             <select onChange={e => handleFilterRegion(e)}>
