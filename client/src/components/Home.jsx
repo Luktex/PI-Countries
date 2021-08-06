@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom'
 import Card from './Card'
 import '../cssComponents/HomeCss.css'
 import Paginado from './Paginado'
+import SearchBar from './SearchBar'
 
 
 export default function Home(){
@@ -77,17 +78,19 @@ return (
             
 
             <Paginado countriesPerPage = {countriesPerPage} allCountries = {allCountries.length} paginado = {paginado}/>
+            <SearchBar/>
 
-
+        <div className='principal2'>
         {currentCountries?.map( (c) => {
                 return(
                     <div className='cartas'>
-                        <Link to={'/home/' + c.id}>
-                            <Card name={c.name} flag={c.flag} region={c.region} key={c.id}/>
-                        </Link>
+                        
+                            <Card id={c.numericCode} name={c.name} flag={c.flag} region={c.region} key={c.numericCode}/>
+                        
                     </div>
                 )})
         }
+        </div>
 
 
         </div>

@@ -32,3 +32,19 @@ export function orderByName(payload){
         payload
     }
 }
+
+
+
+
+export function getNameCountries(name){
+    return async function(dispatch){
+        try {
+            var json = await axios("http://localhost:3001/countries?name=" + name)
+            return dispatch ({
+                type: "GET_NAME_COUNTRIES", payload: json.data })
+        } catch(error) {
+            console.log(error)
+        }
+    }
+}
+

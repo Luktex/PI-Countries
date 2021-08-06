@@ -13,6 +13,14 @@ function rootReducer (state = initialState, action){
             countries: action.payload,
             allCountries: action.payload
         }
+
+        case 'GET_NAME_COUNTRIES':
+        return {
+            ...state,
+            countries: action.payload
+        }
+
+
         case 'FILTER_BY_REGION':
             const allCountries = state.allCountries
             const regionFiltered = action.payload === 'All'?allCountries:allCountries.filter(el => el.region === action.payload )

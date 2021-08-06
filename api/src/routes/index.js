@@ -48,14 +48,17 @@ router.get('/countries', async (req,res)=>{
     const name = req.query.name
     let countriesTotal = await getAllCountries();
     if (name) {
-        console.log("hola")
+        
         let countryName = await countriesTotal.filter(el => el.name.toLowerCase().includes(name.toLowerCase()))
-        console.log(await countriesTotal.filter(el => el.name.toLowerCase().includes(name.toLowerCase())))
-        countryName.length ?
-        res.status(200).send(countryName) : 
-        res.status(404).send('The country is not found');
+        console.log(countryName)
+        if(countryName.length){
+            return res.status(200).send(countryName)
+        } else{
+            return res.status(404).send('The country is not found');
+        }
+        
      } else {
-        console.log("chau")
+        
          countriesTotal.map( (e) =>{
             Country.findOrCreate({where: {name: e.name,
                                             flag: e.flag,
