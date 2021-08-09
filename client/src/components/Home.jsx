@@ -7,6 +7,7 @@ import Card from './Card'
 import '../cssComponents/HomeCss.css'
 import Paginado from './Paginado'
 import SearchBar from './SearchBar'
+import Details from './Details'
 
 
 export default function Home(){
@@ -86,13 +87,13 @@ return (
 
             <Paginado countriesPerPage = {countriesPerPage} allCountries = {allCountries.length} paginado = {paginado}/>
             <SearchBar/>
-
+            
         <div className='principal2'>
         {currentCountries?.map( (c) => {
                 return(
                     <div className='cartas'>
                         
-                            <Card id={c.numericCode} name={c.name} flag={c.flag} region={c.region} key={c.numericCode}/>
+                            <Card id={c.alpha3Code} name={c.name} flag={c.flag} region={c.region} key={c.alpha3Code}/>
                         
                     </div>
                 )})

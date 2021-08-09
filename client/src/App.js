@@ -2,7 +2,8 @@ import './App.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import LandingPage from './components/LandingPage'
 import Home from './components/Home'
-import CountryCreate from './components/CountryCreate.jsx'
+import ActivityCreate from './components/ActivityCreate.jsx'
+import Detail from './components/Details'
 
 function App() {
   return (
@@ -10,8 +11,12 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path= '/' component= {LandingPage}/>
-        <Route path= '/home' component= {Home}/>   
-        <Route path= '/activity' component= {CountryCreate}/>    
+        <Route exact path= '/home' component= {Home}/>   
+        <Route path= '/activity' component= {ActivityCreate}/> 
+        <Route path= '/home/:alpha3Code' exact render={({ match }) => {
+          return <Detail>{match.params.alpha3Code}</Detail>
+        }}/>
+
       </Switch>
     </div>
     </BrowserRouter>

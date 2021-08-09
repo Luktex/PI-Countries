@@ -19,7 +19,7 @@ const getApiInfo = async () => {
             subregion: el.subregion,
             area: el.area,
             population: el.population,
-            numericCode: el.numericCode
+            alpha3Code: el.alpha3Code
         };
     });
     return apiInfo;
@@ -38,11 +38,12 @@ const getApiInfo = async () => {
 // }
 const getAllCountries = async () =>{
     const apiInfo = await getApiInfo();
-    //const dbInfo = await getDbInfo();
+    // const dbInfo = await getDbInfo();
    
-    //const infoTotal = apiInfo.concat(dbInfo);
+    // const infoTotal = apiInfo.concat(dbInfo);
     return apiInfo
 }
+
 
 router.get('/countries', async (req,res)=>{
     const name = req.query.name
@@ -67,7 +68,7 @@ router.get('/countries', async (req,res)=>{
                                             subregion: e.subregion,
                                             area: e.area,
                                             population: e.population,
-                                            numericCode: e.numericCode}})
+                                            alpha3Code: e.alpha3Code}})
          })
         
 
@@ -81,8 +82,9 @@ name,
 difficulty,
 duration,
 season,
-countryName
+country
 } = req.body
+
 let activityCreated = await Activity.create ({
         name,
         difficulty,
@@ -95,19 +97,29 @@ let activityCreated = await Activity.create ({
 
     })
     let countryArg
-    await countryName.map(async (e) => {
+    await country.map(async (e) => {
         countryArg = await Country.findOne({where: {name: e}})
+        console.log(countryArg)
+        console.log(activityDb)
         countryArg.addActivity(activityDb)
+        
     })
     
     res.send('Activity created successfully')
 })
 
+router.get('/activities', async (_req,res) => {
+        let activityDb = await Activity.findAll({
+        include: [{model: Country, require:true}]
+    })
+    res.send(activityDb)
+
+})
 router.get('/countries/:id', async (req,res) => {
     const id = req.params.id;
     const countriesTotal = await getAllCountries()
     if (id){
-        let countryId = await Country.findOne({where: {numericCode: id}, include: [{model: Activity}]})
+        let countryId = await Country.findOne({where: {alpha3Code: id}, include: [{model: Activity}]})
         console.log(countryId)
         countryId?
         res.status(200).send(countryId) :

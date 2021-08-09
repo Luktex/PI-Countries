@@ -2,7 +2,9 @@
 const initialState = {
     countries: [],
     allCountries: [],
-    activities: []
+    activities: [],
+    detail: []
+
 
 }
 
@@ -69,8 +71,12 @@ function rootReducer (state = initialState, action){
                         ...state,
                         countries: sortedArra
                     }
-
-                case 'ORDER_BY_NAME':
+                    case "GET_DETAILS":
+                        return {
+                            ...state,
+                            detail: action.payload
+                        }
+                    case 'ORDER_BY_NAME':
                     let sortedArr = action.payload === 'asc' ?
                         state.countries.sort(function (a, b) {
                             if (a.name > b.name) {
