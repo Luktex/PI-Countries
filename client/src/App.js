@@ -4,6 +4,7 @@ import LandingPage from './components/LandingPage'
 import Home from './components/Home'
 import ActivityCreate from './components/ActivityCreate.jsx'
 import Detail from './components/Details'
+import ActCreated from './components/ActCreated';
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         <Route path= '/home/:alpha3Code' exact render={({ match }) => {
           return <Detail>{match.params.alpha3Code}</Detail>
         }}/>
-
+        <Route path= '/activities' component={ActCreated}/> 
       </Switch>
     </div>
     </BrowserRouter>

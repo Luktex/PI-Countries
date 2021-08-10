@@ -19,7 +19,8 @@ const getApiInfo = async () => {
             subregion: el.subregion,
             area: el.area,
             population: el.population,
-            alpha3Code: el.alpha3Code
+            alpha3Code: el.alpha3Code,
+            
         };
     });
     return apiInfo;
@@ -30,7 +31,7 @@ const getApiInfo = async () => {
 //             model: Activity,
 //             attributes: ['name'],
 //             through: {
-//                 attributes: []
+//                 attributes: [],
 //             },
 //         }
 //     })
@@ -38,9 +39,9 @@ const getApiInfo = async () => {
 // }
 const getAllCountries = async () =>{
     const apiInfo = await getApiInfo();
-    // const dbInfo = await getDbInfo();
-   
-    // const infoTotal = apiInfo.concat(dbInfo);
+    //const dbInfo = await getDbInfo();
+    //const infoTotal = apiInfo.concat(dbInfo);
+
     return apiInfo
 }
 
@@ -48,6 +49,7 @@ const getAllCountries = async () =>{
 router.get('/countries', async (req,res)=>{
     const name = req.query.name
     let countriesTotal = await getAllCountries();
+    
     if (name) {
         
         let countryName = await countriesTotal.filter(el => el.name.toLowerCase().includes(name.toLowerCase()))
@@ -61,20 +63,35 @@ router.get('/countries', async (req,res)=>{
      } else {
         
          countriesTotal.map( (e) =>{
-            Country.findOrCreate({where: {name: e.name,
+            Country.findOrCreate({where: {  name: e.name,
                                             flag: e.flag,
                                             region: e.region,
                                             capital: e.capital,
                                             subregion: e.subregion,
                                             area: e.area,
                                             population: e.population,
-                                            alpha3Code: e.alpha3Code}})
+                                            alpha3Code: e.alpha3Code},
+                                            
+                                })
          })
         
 
     }
     return res.status(200).send(countriesTotal)
 })
+
+router.get('/activitiescr', async (_req,res)=>{
+    
+        let countryAct = await Country.findAll({include: [{model: Activity}]})
+        
+        countryAct?
+        res.status(200).send(countryAct) :
+        res.status(404).send('That country is not found')
+    
+    
+})
+
+
 
 router.post('/activity', async (req,res) => {
     const {
@@ -99,8 +116,7 @@ let activityCreated = await Activity.create ({
     let countryArg
     await country.map(async (e) => {
         countryArg = await Country.findOne({where: {name: e}})
-        console.log(countryArg)
-        console.log(activityDb)
+        
         countryArg.addActivity(activityDb)
         
     })
@@ -120,7 +136,7 @@ router.get('/countries/:id', async (req,res) => {
     const countriesTotal = await getAllCountries()
     if (id){
         let countryId = await Country.findOne({where: {alpha3Code: id}, include: [{model: Activity}]})
-        console.log(countryId)
+        
         countryId?
         res.status(200).send(countryId) :
         res.status(404).send('That country is not found')

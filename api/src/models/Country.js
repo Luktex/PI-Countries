@@ -6,7 +6,7 @@ module.exports = (sequelize) => {
   sequelize.define('country', {
     alpha3Code: {
       type: DataTypes.STRING,
-      defaultValue: DataTypes.STRING,
+      
       allowNull: false,
       primaryKey: true
     },
@@ -43,9 +43,5 @@ module.exports = (sequelize) => {
       allowNull: false,
       defaultValue: true
   },
-  numericCode: {
-    type: DataTypes.STRING,
-    allowNull: true,
-},
   });
 };

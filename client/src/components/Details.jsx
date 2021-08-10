@@ -32,7 +32,7 @@ return(
                 <p>Subregion: {myCountry.subregion}</p>
                 <p>Area: {myCountry.area}km²</p>
                 <p>Population: {myCountry.population}</p>
-                <h3>Activities: {!myCountry.createdInDb? myCountry.activities + ' ' : myCountry.activities.map((el) => el.name + (' ') + el.duration)}</h3>
+                <h3>Activities: {!myCountry.createdInDb? myCountry.activities + ' ' : myCountry.activities.map((el) => ('Name: ') + el.name + (', ') + ('Duration: ') + el.duration + (', ') + ('Difficulty: ') + el.difficulty + (', ') + ('Season: ') + el.season + (', '))}</h3>
 
             </div> : <p>Loading...</p>
 

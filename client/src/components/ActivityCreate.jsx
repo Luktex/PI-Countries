@@ -29,7 +29,11 @@ function handleChange(e){
 }
 
 function handleSelect(e){
-    setInput({
+    
+    input.country.includes(e.target.value)?
+    alert('Already Selected')
+    
+    :setInput({
         ...input,
         country: [...input.country,e.target.value]
     })
@@ -65,6 +69,7 @@ function handleSubmit(e){
                     type= "text" 
                     value= {input.name}
                     name="name"
+                    required
                     onChange={(e) => handleChange(e)}
                     />
                    
@@ -76,6 +81,7 @@ function handleSubmit(e){
                     value= {input.difficulty}
                     name="difficulty"
                     onChange={(e) => handleChange(e)}
+                    required
                     />
                 </div>
                 <div>
@@ -85,6 +91,7 @@ function handleSubmit(e){
                     value= {input.duration}
                     name="duration"
                     onChange={(e) => handleChange(e)}
+                    required
                     />
                 </div>
                 <div>
@@ -94,14 +101,19 @@ function handleSubmit(e){
                     value= {input.season}
                     name="season"
                     onChange={(e) => handleChange(e)}
+                    required
                     />
                 </div>
                 <select onChange={(e) => handleSelect(e)}>
+                <option disabled selected>Countries</option>
                     {countries.map((coun) => (
                         <option value={coun.name}>{coun.name}</option>
                     ))}
                 </select>
-                <ul><li>{input.country.map(el => el + ", ")}</li></ul>
+                <ul>
+                    <li>{input.country.map(el => el + ", ")}
+                    </li>
+                </ul>
                 <button type="submit">Create activity</button>
             </form>
         </div>

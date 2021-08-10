@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import { getCountries, filterCountriesByRegion, filterCreated, orderByName, orderByPopu } from '../actions'
+import { getCountries, filterCountriesByRegion, filterCreated, orderByName, orderByPopu, getActivities, getActivities2 } from '../actions'
 import {Link} from 'react-router-dom'
 import Card from './Card'
 import '../cssComponents/HomeCss.css'
@@ -12,7 +12,11 @@ import Details from './Details'
 
 export default function Home(){
 
+
 const dispatch = useDispatch()
+const myCountry = useSelector ((state) => state.activities)
+
+
 const allCountries = useSelector((state) => state.countries)
 const [orden, setOrden] = useState('')
 const [currentPage,setCurrentPage] = useState(1);
@@ -25,8 +29,9 @@ const paginado = (pageNumber) => {
 }; 
 
 
-useEffect(() => {
-    dispatch(getCountries());
+useEffect(async () => {
+    await dispatch(getCountries())
+    dispatch(getActivities())
 },[])
 
 function handleClick(e){
@@ -39,8 +44,9 @@ function handleFilterRegion(e){
 dispatch(filterCountriesByRegion(e.target.value))
 }
 
-function handleFilterCreated(e){
-    dispatch(filterCreated(e.target.value))
+function handleActivities(e){
+    e.preventDefault();
+    dispatch(getActivities(e.target.value))
 }
 
 function handlePopu(e){
@@ -59,11 +65,15 @@ function handleSort (e){
 
 return (
     <div className='principal'>
-        <Link to= '/activity'>Create a turistic activity</Link>
+        <button><Link to= '/activity'>Create a turistic activity</Link></button>
+        
         <h1>Countries of the world</h1>
         <button onClick={e => {handleClick(e)}}>
             Reload countries
         </button>
+        <button onClick={e => {handleActivities(e)}}>.
+        <Link to= '/activities'>Activities created</Link>
+        </button> 
         <div>
             <select onChange={e => handleSort(e)}>
                 <option value= 'asc'>Ascendente</option>
@@ -72,7 +82,7 @@ return (
             <select onChange={e => handlePopu(e)}>
                 <option value= 'popu'>Population asc</option>
                 <option value= 'popu2'>Population desc</option>
-                <option value= 'act'>Turistic activity</option>
+            
             </select>
             <select onChange={e => handleFilterRegion(e)}>
                 <option value= 'All'>All</option>
@@ -82,6 +92,14 @@ return (
                 <option value= 'Oceania'>Oceania</option>
                 <option value= 'Africa'>Africa</option>
                 <option value= 'Polar'>Antarctica</option>
+            </select>
+            <select Change={e => handleActivities(e)}>
+            <option disabled selected>Activity</option>
+            
+                    {myCountry.map((e) => (
+                    <option value={e.name}>{e.name}</option>  
+                    ))
+                }
             </select>
             
 
@@ -96,6 +114,7 @@ return (
                             <Card id={c.alpha3Code} name={c.name} flag={c.flag} region={c.region} key={c.alpha3Code}/>
                         
                     </div>
+                    
                 )})
         }
         </div>

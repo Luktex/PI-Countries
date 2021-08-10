@@ -14,7 +14,8 @@ function rootReducer (state = initialState, action){
         return{
             ...state,
             countries: action.payload,
-            allCountries: action.payload
+            allCountries: action.payload,
+           
         }
 
         case 'GET_NAME_COUNTRIES':
@@ -23,10 +24,15 @@ function rootReducer (state = initialState, action){
             countries: action.payload
         }
         case 'GET_ACTIVITIES':
+            const allActivities = state.allCountries
+            console.log('statecountries',state.allCountries)
+            console.log('holaaaa',allActivities)
+            const ActFilter = action.payload === 'All'?allActivities:allActivities.map(el => el.activities.includes('CANTAR'))
+                   console.log('lolis',ActFilter) 
             return {
-                ...state,
-                activities: action.payload
-            }
+                        ...state,
+                        activities: ActFilter
+                    }
 
         case 'FILTER_BY_REGION':
             const allCountries = state.allCountries
@@ -36,7 +42,7 @@ function rootReducer (state = initialState, action){
                 countries: regionFiltered
 
             }
-            case "POST_COUNTRY":
+            case "POST_ACTIVITY":
                 return {
                     ...state,
                 }
