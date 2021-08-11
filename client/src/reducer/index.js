@@ -1,4 +1,5 @@
 
+
 const initialState = {
     countries: [],
     allCountries: [],
@@ -25,14 +26,48 @@ function rootReducer (state = initialState, action){
         }
         case 'GET_ACTIVITIES':
             const allActivities = state.allCountries
-            console.log('statecountries',state.allCountries)
-            console.log('holaaaa',allActivities)
-            const ActFilter = action.payload === 'All'?allActivities:allActivities.map(el => el.activities.includes('CANTAR'))
-                   console.log('lolis',ActFilter) 
+            const activitys = []
+            
+            const actTotal = allActivities.map(el => el.activities.map((e)=>{
+                activitys.push(e)
+            }))
+            console.log('activity',activitys)
+            console.log('act',actTotal)
+            
+           
+            const ActFilter = action.payload === activitys?activitys:activitys.map(el => el.name)
+                   console.log('lol',ActFilter) 
+                
             return {
                         ...state,
                         activities: ActFilter
                     }
+
+        case 'FILTER_BY_ACTIVITIES':
+            const allAct = state.allCountries
+           
+            const actFiltered = action.payload === 'All'?allAct:allAct.filter(el => {
+                const lala = el.activities.map( (e) => {
+                (console.log('e',e))
+                if(action.payload === e.name){
+                    return true
+                } else {
+                    return false
+                }
+            })
+            console.log('lala',lala)
+            if(lala.includes(true)){
+                return true 
+            } else {
+                return false
+            }
+                })
+            
+            return{
+                ...state,
+                countries: actFiltered
+
+            }
 
         case 'FILTER_BY_REGION':
             const allCountries = state.allCountries

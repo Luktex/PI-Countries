@@ -45,12 +45,19 @@ export function orderByPopu(payload){
 
 export function getActivities() {
     return async function(dispatch){
-        var json = await axios.get('http://localhost:3001/activities')
+        var json = await axios('http://localhost:3001/activities')
     
         return dispatch({
         type: 'GET_ACTIVITIES',
         payload: json.data
         })
+    }
+}
+
+export function filterByActivities(payload){
+    return {
+        type: 'FILTER_BY_ACTIVITIES',
+        payload
     }
 }
 

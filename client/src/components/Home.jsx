@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import { getCountries, filterCountriesByRegion, filterCreated, orderByName, orderByPopu, getActivities, getActivities2 } from '../actions'
+import { getCountries, filterCountriesByRegion, filterCreated, orderByName, orderByPopu, getActivities, filterByActivities } from '../actions'
 import {Link} from 'react-router-dom'
 import Card from './Card'
 import '../cssComponents/HomeCss.css'
@@ -15,7 +15,7 @@ export default function Home(){
 
 const dispatch = useDispatch()
 const myCountry = useSelector ((state) => state.activities)
-
+console.log('home',myCountry)
 
 const allCountries = useSelector((state) => state.countries)
 const [orden, setOrden] = useState('')
@@ -63,6 +63,11 @@ function handleSort (e){
     setOrden(`Ordered ${e.target.value}`)
 }
 
+function HandleByActivities(e){
+    e.preventDefault();
+dispatch(filterByActivities(e.target.value))
+}
+
 return (
     <div className='principal'>
         <button><Link to= '/activity'>Create a turistic activity</Link></button>
@@ -93,11 +98,11 @@ return (
                 <option value= 'Africa'>Africa</option>
                 <option value= 'Polar'>Antarctica</option>
             </select>
-            <select Change={e => handleActivities(e)}>
+            <select onChange={e => HandleByActivities(e)}>
             <option disabled selected>Activity</option>
             
                     {myCountry.map((e) => (
-                    <option value={e.name}>{e.name}</option>  
+                    <option value={e}>{e}</option>  
                     ))
                 }
             </select>
