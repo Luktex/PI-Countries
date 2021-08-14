@@ -2,7 +2,7 @@ import React from 'react';
 import {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import { getNameCountries } from '../actions';
-
+import { Link } from 'react-router-dom'
 export default function SearchBar(){
     const dispatch = useDispatch()
     const [name,setName] = useState("")
@@ -19,13 +19,13 @@ export default function SearchBar(){
     }
 
 return (
-    <div>
+    <div className='search'>
         <input 
             type = 'text'
             placeholder = 'Search country...'
             onChange = {(e) => handleInputChange(e)}
         />
-        <button type='submit' onClick={(e) => handleSumbit(e)}>Search</button>
+        <button type='submit' onClick={(e) => handleSumbit(e)}><Link>Search</Link></button>
     </div>
 )
 

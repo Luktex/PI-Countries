@@ -19,6 +19,14 @@ function rootReducer (state = initialState, action){
            
         }
 
+        case 'GET_ALL_COUNTRIES':
+        return{
+            ...state,
+            countries: action.payload,
+            allCountries: action.payload,
+           
+        }
+
         case 'GET_NAME_COUNTRIES':
         return {
             ...state,
@@ -36,11 +44,16 @@ function rootReducer (state = initialState, action){
             
            
             const ActFilter = action.payload === activitys?activitys:activitys.map(el => el.name)
-                   console.log('lol',ActFilter) 
+            const noLoop = ActFilter.reduce((a, e) => {
+                if(!a.find(d => d == e)) {
+                    a.push(e)
+                }
+                return a;
+            }, [])      
                 
             return {
                         ...state,
-                        activities: ActFilter
+                        activities: noLoop
                     }
 
         case 'FILTER_BY_ACTIVITIES':
@@ -55,7 +68,7 @@ function rootReducer (state = initialState, action){
                     return false
                 }
             })
-            console.log('lala',lala)
+            
             if(lala.includes(true)){
                 return true 
             } else {

@@ -3,7 +3,7 @@ import {useDispatch,useSelector} from 'react-redux'
 import {getDetail} from '../actions/index'
 import { useEffect } from 'react'
 import {Link} from 'react-router-dom';
-
+import '../cssComponents/HomeCss.css'
 
 
 export default function Detail(props) {
@@ -22,17 +22,17 @@ const myCountry = useSelector ((state) => state.detail)
 console.log(myCountry)
 
 return(
-    <div>
+    <div >
         {
             myCountry.name?
-            <div>
+            <div className='card-detail'>
                 <h1>{myCountry.name}</h1>
-                <img src={myCountry.flag} alt='not img' />
+                <img src={myCountry.flag} alt='not img' width='350px' height='250px' />
                 <h2>Capital: {myCountry.capital}</h2>
                 <p>Subregion: {myCountry.subregion}</p>
                 <p>Area: {myCountry.area}km²</p>
                 <p>Population: {myCountry.population}</p>
-                <h3>Activities: {!myCountry.createdInDb? myCountry.activities + ' ' : myCountry.activities.map((el) => ('Name: ') + el.name + (', ') + ('Duration: ') + el.duration + (', ') + ('Difficulty: ') + el.difficulty + (', ') + ('Season: ') + el.season + (', '))}</h3>
+                <h3 className='Activities'>Activities: {!myCountry.createdInDb? myCountry.activities + ' ' : myCountry.activities.map((el) => ('Name: ') + el.name + (', ') + ('Duration: ') + el.duration + (', ') + ('Difficulty: ') + el.difficulty + (', ') + ('Season: ') + el.season + (', '))}</h3>
 
             </div> : <p>Loading...</p>
 

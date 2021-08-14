@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from 'react'
 import { Link,useHistory } from 'react-router-dom'
-import {postActivity,getCountries} from '../actions/index'
+import {postActivity,getCountries, orderByName} from '../actions/index'
 import { useDispatch, useSelector } from 'react-redux'
 import '../cssComponents/create.css'
 
@@ -9,6 +9,7 @@ export default function ActivityCreate(){
     const dispatch = useDispatch()
     const countries = useSelector((state) => state.countries)
     const history = useHistory()
+    dispatch(orderByName("asc"))
 
 
 
@@ -36,7 +37,9 @@ function handleSelect(e){
     :setInput({
         ...input,
         country: [...input.country,e.target.value]
+        
     })
+    
 }
 
 function handleSubmit(e){
@@ -60,7 +63,7 @@ function handleSubmit(e){
 
     return (
         <div className="create">
-            <Link to= '/home'><button>Home</button></Link>
+            <button><Link to= '/home'>Home</Link></button>
             <h1>Create your activity!</h1>
             <form onSubmit={(e) => handleSubmit(e)}>
                 <div>
@@ -106,15 +109,15 @@ function handleSubmit(e){
                 </div>
                 <select onChange={(e) => handleSelect(e)}>
                 <option disabled selected>Countries</option>
-                    {countries.map((coun) => (
-                        <option value={coun.name}>{coun.name}</option>
+                    {countries.map((coun, i) => (
+                        <option key={i} value={coun.name}>{coun.name}</option>
                     ))}
                 </select>
                 <ul>
-                    <li>{input.country.map(el => el + ", ")}
-                    </li>
+                    {input.country.map((el) => <li>{el + ", "}</li>)}
+                    
                 </ul>
-                <button type="submit">Create activity</button>
+               <button type="submit">Create activity</button>
             </form>
         </div>
     )

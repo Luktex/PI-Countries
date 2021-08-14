@@ -53,7 +53,7 @@ router.get('/countries', async (req,res)=>{
     if (name) {
         
         let countryName = await countriesTotal.filter(el => el.name.toLowerCase().includes(name.toLowerCase()))
-        console.log(countryName)
+        
         if(countryName.length){
             return res.status(200).send(countryName)
         } else{
@@ -120,7 +120,6 @@ let activityCreated = await Activity.create ({
         countryArg.addActivity(activityDb)
         
     })
-    
     res.send('Activity created successfully')
 })
 

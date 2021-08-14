@@ -16,7 +16,6 @@ export default function Home(){
 const dispatch = useDispatch()
 const myCountry = useSelector ((state) => state.activities)
 console.log('home',myCountry)
-
 const allCountries = useSelector((state) => state.countries)
 const [orden, setOrden] = useState('')
 const [currentPage,setCurrentPage] = useState(1);
@@ -32,11 +31,16 @@ const paginado = (pageNumber) => {
 useEffect(async () => {
     await dispatch(getCountries())
     dispatch(getActivities())
+    dispatch(orderByName('asc'))
 },[])
 
 function handleClick(e){
 e.preventDefault();
-dispatch(getCountries())
+dispatch(orderByName("asc"))
+dispatch(getCountries());
+setCurrentPage(1);
+setOrden(`Ordered ${e.target.value}`)
+
 }
 
 function handleFilterRegion(e){
@@ -64,45 +68,48 @@ function handleSort (e){
 }
 
 function HandleByActivities(e){
+    
+    
+
     e.preventDefault();
 dispatch(filterByActivities(e.target.value))
 }
 
 return (
     <div className='principal'>
-        <button><Link to= '/activity'>Create a turistic activity</Link></button>
+        <button className='botoncreate'><Link to= '/activity'>Create a turistic activity</Link></button>
         
-        <h1>Countries of the world</h1>
-        <button onClick={e => {handleClick(e)}}>
+        <h1 className='tituloPrincipal'>Countries of the world</h1>
+        <button className='botonreload' onClick={e => {handleClick(e)}}>
             Reload countries
         </button>
-        <button onClick={e => {handleActivities(e)}}>.
+        {/* <button onClick={e => {handleActivities(e)}}>.
         <Link to= '/activities'>Activities created</Link>
-        </button> 
-        <div>
+        </button>  */}
+        <div className='selects'>
             <select onChange={e => handleSort(e)}>
-                <option value= 'asc'>Ascendente</option>
-                <option value= 'desc'>Descendente</option>
+                <option key='asc' value= 'asc'>A-Z</option>
+                <option key='desc' value= 'desc'>Z-A</option>
             </select>
             <select onChange={e => handlePopu(e)}>
-                <option value= 'popu'>Population asc</option>
-                <option value= 'popu2'>Population desc</option>
+                <option key='popu' value= 'popu'>Population min-max</option>
+                <option key='popu2' value= 'popu2'>Population max-min</option>
             
             </select>
             <select onChange={e => handleFilterRegion(e)}>
-                <option value= 'All'>All</option>
-                <option value= 'Americas'>Americas</option>
-                <option value= 'Europe'>Europe</option>
-                <option value= 'Asia'>Asia</option>
-                <option value= 'Oceania'>Oceania</option>
-                <option value= 'Africa'>Africa</option>
-                <option value= 'Polar'>Antarctica</option>
+                <option key='All' value= 'All'>All</option>
+                <option key='Americas' value= 'Americas'>Americas</option>
+                <option key='Europe' value= 'Europe'>Europe</option>
+                <option key='Asia' value= 'Asia'>Asia</option>
+                <option key='Oceania' value= 'Oceania'>Oceania</option>
+                <option key='Africa' value= 'Africa'>Africa</option>
+                <option key='Polar' value= 'Polar'>Antarctica</option>
             </select>
             <select onChange={e => HandleByActivities(e)}>
-            <option disabled selected>Activity</option>
+            <option disabled value>Activity</option>
             
-                    {myCountry.map((e) => (
-                    <option value={e}>{e}</option>  
+                    {myCountry.map((e,i) => (
+                    <option key={i} value={e}>{e}</option>  
                     ))
                 }
             </select>
@@ -111,7 +118,7 @@ return (
             <Paginado countriesPerPage = {countriesPerPage} allCountries = {allCountries.length} paginado = {paginado}/>
             <SearchBar/>
             
-        <div className='principal2'>
+        <div className='contenedor-cartas'>
         {currentCountries?.map( (c) => {
                 return(
                     <div className='cartas'>

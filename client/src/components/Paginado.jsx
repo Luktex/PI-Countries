@@ -1,5 +1,4 @@
 import React from 'react';
-
 const Paginado = ({ countriesPerPage, allCountries, paginado }) => {
   const pageNumbers = [];
 
@@ -10,9 +9,9 @@ const Paginado = ({ countriesPerPage, allCountries, paginado }) => {
   return (
     <nav>
       <ul className='paginado'>
-        {pageNumbers.map(number => (
+        {pageNumbers.map((number,i) => (
           
-            <a onClick={() => paginado(number)} className='number'>
+          <a key={i} onClick={() => paginado(number)} className='number'>
               {number}
             </a>
           
