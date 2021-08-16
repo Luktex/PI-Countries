@@ -22,7 +22,7 @@ const myCountry = useSelector ((state) => state.detail)
 console.log(myCountry)
 
 return(
-    <div >
+    <div>
         {
             myCountry.name?
             <div className='card-detail'>
@@ -32,13 +32,13 @@ return(
                 <p>Subregion: {myCountry.subregion}</p>
                 <p>Area: {myCountry.area}km²</p>
                 <p>Population: {myCountry.population}</p>
-                <h3 className='Activities'>Activities: {!myCountry.createdInDb? myCountry.activities + ' ' : myCountry.activities.map((el) => ('Name: ') + el.name + (', ') + ('Duration: ') + el.duration + (', ') + ('Difficulty: ') + el.difficulty + (', ') + ('Season: ') + el.season + (', '))}</h3>
+                <h3 className='Activities'>Activities: {!myCountry.createdInDb? myCountry.activities + ' ' : myCountry.activities.map((el) => <li>{('Name: ') + el.name + (', ') + ('Duration: ') + el.duration + (', ') + ('Difficulty: ') + el.difficulty + (', ') + ('Season: ') + el.season + ('.')}</li>)}</h3>
 
             </div> : <p>Loading...</p>
 
         }
         <Link to='/home'>
-            <button>Back</button>
+            <button className='boton-detalle'>Back</button>
         </Link>
     </div>
 )

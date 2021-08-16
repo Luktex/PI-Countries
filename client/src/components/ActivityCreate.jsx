@@ -2,7 +2,7 @@ import React, {useState,useEffect} from 'react'
 import { Link,useHistory } from 'react-router-dom'
 import {postActivity,getCountries, orderByName} from '../actions/index'
 import { useDispatch, useSelector } from 'react-redux'
-import '../cssComponents/create.css'
+
 
 
 export default function ActivityCreate(){
@@ -63,7 +63,7 @@ function handleSubmit(e){
 
     return (
         <div className="create">
-            <button><Link to= '/home'>Home</Link></button>
+            <button className='boton-home-create'><Link to= '/home'>Home</Link></button>
             <h1>Create your activity!</h1>
             <form onSubmit={(e) => handleSubmit(e)}>
                 <div>
@@ -78,9 +78,10 @@ function handleSubmit(e){
                    
                 </div>
                 <div>
-                    <label>Difficulty:</label>
+                    <label>Difficulty(1-5):</label>
                     <input
-                    type="text"
+                    type="number"
+                    min="1" max="5"
                     value= {input.difficulty}
                     name="difficulty"
                     onChange={(e) => handleChange(e)}
@@ -88,9 +89,10 @@ function handleSubmit(e){
                     />
                 </div>
                 <div>
-                    <label>Duration:</label>
+                    <label>Duration(Weeks):</label>
                     <input
-                    type="text"
+                    type="number"
+                    min='1'
                     value= {input.duration}
                     name="duration"
                     onChange={(e) => handleChange(e)}
@@ -99,13 +101,14 @@ function handleSubmit(e){
                 </div>
                 <div>
                     <label>Season:</label>
-                    <input
-                    type="text"
-                    value= {input.season}
-                    name="season"
-                    onChange={(e) => handleChange(e)}
-                    required
-                    />
+                    <select name='Season' onChange={(e) => handleChange(e)} required>
+                                <option></option>
+                                <option value={input.season}>Summer</option>
+                                <option value={input.season}>Winter</option>
+                                <option value={input.season}>Autunm</option>
+                                <option value={input.season}>Spring</option>
+                    </select>
+                    
                 </div>
                 <select onChange={(e) => handleSelect(e)}>
                 <option disabled selected>Countries</option>

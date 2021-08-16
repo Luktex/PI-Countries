@@ -106,7 +106,7 @@ return (
                 <option key='Polar' value= 'Polar'>Antarctica</option>
             </select>
             <select onChange={e => HandleByActivities(e)}>
-            <option disabled value>Activity</option>
+            <option >Activity</option>
             
                     {myCountry.map((e,i) => (
                     <option key={i} value={e}>{e}</option>  

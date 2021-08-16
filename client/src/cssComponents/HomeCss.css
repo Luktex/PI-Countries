@@ -8,8 +8,14 @@ h1{
     display: inline-flexbox;
     text-shadow: black;
     text-anchor: start;
+    background-color: grey;
+    
     
 }
+
+
+
+
 
 div h2{
     text-decoration: none;
@@ -18,6 +24,9 @@ div h2{
     border-radius: 10px;
 }
 
+h3{
+    background-color: grey;
+}
 
 
 .search{
@@ -38,11 +47,14 @@ div h2{
     border: 10px outset rgba(0, 0, 0, 0.849);
     border-radius: 25px;
     margin: 10px;
+    background-color: grey;
+   
     
 }
 
 .cards{
     color: white;
+    
 }
 
 .botoncreate {
@@ -58,6 +70,8 @@ div h2{
 }
 
 .tituloPrincipal {
+    color: black;
+    background-color: grey;
     
 }
 .number {
@@ -75,7 +89,8 @@ div h2{
     left: 300px;
     position: fixed;
     justify-content: center;
-   
+    background-color: grey
+
     
 }
 
@@ -83,9 +98,17 @@ div h2{
     cursor: pointer;
 }
 
-
+.button{
+    border-radius: 10px;
+}
 
 .card-detail{
     color: white;
-    border: 10px solid blue;
+    
+    background-color: grey;
+    opacity: 98%;
+}
+
+.boton-detalle{
+    box-sizing: content-box;
 }
