@@ -86,17 +86,17 @@ return (
         {/* <button onClick={e => {handleActivities(e)}}>.
         <Link to= '/activities'>Activities created</Link>
         </button>  */}
-        <div className='selects'>
-            <select onChange={e => handleSort(e)}>
+        <div >
+            <select className='selects' onChange={e => handleSort(e)}>
                 <option key='asc' value= 'asc'>A-Z</option>
                 <option key='desc' value= 'desc'>Z-A</option>
             </select>
-            <select onChange={e => handlePopu(e)}>
+            <select className='selects' onChange={e => handlePopu(e)}>
                 <option key='popu' value= 'popu'>Population min-max</option>
                 <option key='popu2' value= 'popu2'>Population max-min</option>
             
             </select>
-            <select onChange={e => handleFilterRegion(e)}>
+            <select className='selects' onChange={e => handleFilterRegion(e)}>
                 <option key='All' value= 'All'>All</option>
                 <option key='Americas' value= 'Americas'>Americas</option>
                 <option key='Europe' value= 'Europe'>Europe</option>
@@ -105,7 +105,7 @@ return (
                 <option key='Africa' value= 'Africa'>Africa</option>
                 <option key='Polar' value= 'Polar'>Antarctica</option>
             </select>
-            <select onChange={e => HandleByActivities(e)}>
+            <select className='selects' onChange={e => HandleByActivities(e)}>
             <option >Activity</option>
             
                     {myCountry.map((e,i) => (

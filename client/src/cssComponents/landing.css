@@ -1,13 +1,13 @@
 .principalanding {
    line-height: 200px;
    color: white;
-   display: block
-   
+   display: inline-block;
+   opacity: 90%;
    
 }
 .boton {
     
-    color: rgb(0, 0, 0); 
+    color: white;
     font-size: 15px; 
     line-height: 15px; 
     padding: 11px; 
@@ -19,11 +19,16 @@
     font-style: normal; 
     font-variant: normal; 
     text-transform: none; 
-    background-image: linear-gradient(to right, rgb(248, 248, 248) 0%, rgb(35, 136, 203) 50%, rgb(20, 78, 117) 100%); 
+    background-image: linear-gradient(to right, rgb(90, 8, 241)  0%, rgb(90, 8, 241) 50%, yellowgreen 100%); 
     box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px; 
-    border: 2px solid rgb(28, 110, 164); 
+    border: 2px solid yellowgreen;
     display: flexbox;
 }
   .boton:hover{
       cursor: pointer;
   }  
+
+  body{
+background-image: url('https://www.chinadaily.com.cn/bizchina/img/2016top10/attachement/jpg/site1/20160217/b083fe96faa4182e64cf05.jpg');
+  }
+  

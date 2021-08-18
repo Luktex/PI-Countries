@@ -20,12 +20,12 @@ export default function SearchBar(){
 
 return (
     <div className='search'>
-        <input 
+        <input className='search-input'
             type = 'text'
             placeholder = 'Search country...'
             onChange = {(e) => handleInputChange(e)}
         />
-        <button type='submit' onClick={(e) => handleSumbit(e)}><Link>Search</Link></button>
+        <button className='boton-search' type='submit' onClick={(e) => handleSumbit(e)}><Link>Search</Link></button>
     </div>
 )
 

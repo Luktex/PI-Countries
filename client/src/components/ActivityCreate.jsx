@@ -26,7 +26,7 @@ function handleChange(e){
         ...input,
         [e.target.name]: e.target.value
     })
-    console.log(input)
+    console.log(e.target.value)
 }
 
 function handleSelect(e){
@@ -62,10 +62,10 @@ function handleSubmit(e){
     }, []);
 
     return (
-        <div className="create">
+        <div >
             <button className='boton-home-create'><Link to= '/home'>Home</Link></button>
             <h1>Create your activity!</h1>
-            <form onSubmit={(e) => handleSubmit(e)}>
+            <form className="create" onSubmit={(e) => handleSubmit(e)}>
                 <div>
                     <label>Name:</label>
                     <input 
@@ -79,7 +79,7 @@ function handleSubmit(e){
                 </div>
                 <div>
                     <label>Difficulty(1-5):</label>
-                    <input
+                    <input className='dif-create'
                     type="number"
                     min="1" max="5"
                     value= {input.difficulty}
@@ -90,7 +90,7 @@ function handleSubmit(e){
                 </div>
                 <div>
                     <label>Duration(Weeks):</label>
-                    <input
+                    <input className='dura-create'
                     type="number"
                     min='1'
                     value= {input.duration}
@@ -101,12 +101,12 @@ function handleSubmit(e){
                 </div>
                 <div>
                     <label>Season:</label>
-                    <select name='Season' onChange={(e) => handleChange(e)} required>
+                    <select className='sea-create' name='season' onChange={(e) => handleChange(e)} required>
                                 <option></option>
-                                <option value={input.season}>Summer</option>
-                                <option value={input.season}>Winter</option>
-                                <option value={input.season}>Autunm</option>
-                                <option value={input.season}>Spring</option>
+                                <option value='Summer'>Summer</option>
+                                <option value='Winter'>Winter</option>
+                                <option value='Autunm'>Autunm</option>
+                                <option value='Spring'>Spring</option>
                     </select>
                     
                 </div>
@@ -117,10 +117,10 @@ function handleSubmit(e){
                     ))}
                 </select>
                 <ul>
-                    {input.country.map((el) => <li>{el + ", "}</li>)}
+                    {input.country.map((el) => <li>{el}</li>)}
                     
                 </ul>
-               <button type="submit">Create activity</button>
+               <button  type="submit">Create activity</button>
             </form>
         </div>
     )

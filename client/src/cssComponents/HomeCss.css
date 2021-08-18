@@ -1,18 +1,19 @@
-
+*{
+    border-radius: 10px;
+}
 
 h1{
     margin-top: 50px;
     color: white;
     font-size: 30px;
-    border: 10px outset rgba(0, 0, 0, 0.849);
+    border: 10px outset yellowgreen;
     display: inline-flexbox;
     text-shadow: black;
     text-anchor: start;
-    background-color: grey;
+    background-color: rgb(90, 8, 241);
     
     
 }
-
 
 
 
@@ -25,7 +26,8 @@ div h2{
 }
 
 h3{
-    background-color: grey;
+    color: white;
+    background-color: rgb(90, 8, 241);
 }
 
 
@@ -42,19 +44,30 @@ h3{
     
 }
 
+.selects{
+    border-radius: 10px;
+}
+
 .cartas {
     
-    border: 10px outset rgba(0, 0, 0, 0.849);
+    border: 10px outset yellowgreen;
     border-radius: 25px;
     margin: 10px;
-    background-color: grey;
+    background-color: rgb(90, 8, 241);
+    
    
     
 }
 
 .cards{
     color: white;
+    text-decoration: none;
+
     
+}
+.h2card{
+    text-decoration: none;
+    color: white
 }
 
 .botoncreate {
@@ -62,7 +75,32 @@ h3{
     right: 0px;
     border-radius: 10px;
     top: 10px;
+    cursor: pointer;
+    background-color: yellowgreen;
+    color: white;
+    border: 10px outset rgb(90, 8, 241);
+    font-size: 15px;
 }
+
+.search{
+    background-color: yellowgreen;
+    border: 5px outset rgb(90, 8, 241);
+    
+}
+.search-input{
+    border-radius: 3px;
+}
+
+.boton-search{
+    cursor: pointer;
+    background-color: yellowgreen;
+    color: white;
+    border: 0px outset rgb(90, 8, 241);
+    font-size: 15px;
+    text-decoration: none!important;
+}
+
+
 .principal {
     background-image: url('');
     ;
@@ -70,45 +108,95 @@ h3{
 }
 
 .tituloPrincipal {
-    color: black;
-    background-color: grey;
+    color: white;
+    background-color: rgb(90, 8, 241);
     
 }
 .number {
     border-width: 8px;
     border-style: solid;
-    border-color: white;
-    box-shadow: 200px 0 white inset;
+    border-color: yellowgreen;
+    box-shadow: 200px 0 yellowgreen inset;
     margin: 2px;
     cursor: pointer;
+    border-radius: 10px;
+    color: black;
+    
+    
    
     
 }
 .paginado {
-    top: 0px;
+    top: -5px;
     left: 300px;
     position: fixed;
     justify-content: center;
-    background-color: grey
+    background-color: yellowgreen;
+    color: white;
+    border: 10px outset rgb(90, 8, 241);
+    font-size: 15px;
 
     
 }
 
+
 .botonreload{
     cursor: pointer;
+    background-color: yellowgreen;
+    color: white;
+    border: 10px outset rgb(90, 8, 241);
+    font-size: 15px;
 }
-
+.selects {
+    font-size: 15px;
+    background-color: yellowgreen;
+    color: white;
+    border: 6px outset rgb(90, 8, 241);
+}
 .button{
     border-radius: 10px;
 }
 
 .card-detail{
-    color: white;
+    text-decoration: none;
     
-    background-color: grey;
+    background-color: yellowgreen;
     opacity: 98%;
 }
 
 .boton-detalle{
-    box-sizing: content-box;
+    cursor: pointer;
+    background-color: yellowgreen;
+    color: black;
+    border: 10px outset rgb(90, 8, 241);
+    font-size: 15px;
+}
+
+
+.boton-home-create{
+    cursor: pointer;
+    background-color: yellowgreen;
+    color: black;
+    border: 10px outset rgb(90, 8, 241);
+    font-size: 15px;
+}
+
+.create{
+    background-color: yellowgreen;
+    text-align: center;
+    display: inline-block;
+    border: 10px outset rgb(90, 8, 241);
+
+    
+}
+
+
+.dif-create{
+    width: 87px;
+}
+.dura-create{
+    width: 68px;
+}
+.sea-create{
+    width: 143px;
 }
