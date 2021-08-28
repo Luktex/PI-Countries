@@ -23,9 +23,8 @@ return (
         <input className='search-input'
             type = 'text'
             placeholder = 'Search country...'
-            onChange = {(e) => handleInputChange(e)}
-        />
-        <button className='boton-search' type='submit' onClick={(e) => handleSumbit(e)}><Link>Search</Link></button>
+            onChange = {(e) => handleInputChange(e)}/>
+        <button className='boton-search' type='submit' onClick={(e) => handleSumbit(e)}>Search</button>
     </div>
 )
 

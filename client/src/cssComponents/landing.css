@@ -1,34 +1,44 @@
-.principalanding {
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+.landing-div {
    line-height: 200px;
-   color: white;
-   display: inline-block;
    opacity: 90%;
+  
    
 }
+
+.principal-h1{
+  text-shadow: 2px 2px 2px black;
+  font-size: 40px;
+  color: white
+}
+
+
 .boton {
-    
-    color: white;
+    color: black;
     font-size: 15px; 
     line-height: 15px; 
     padding: 11px; 
-    border-radius: 
-    20px; 
+    border-radius: 20px; 
     font-family: Georgia, serif; 
     font-weight: normal; 
     text-decoration: none; 
     font-style: normal; 
     font-variant: normal; 
     text-transform: none; 
-    background-image: linear-gradient(to right, rgb(90, 8, 241)  0%, rgb(90, 8, 241) 50%, yellowgreen 100%); 
+    background-image: silver; 
     box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px; 
-    border: 2px solid yellowgreen;
-    display: flexbox;
+    
+    
 }
   .boton:hover{
       cursor: pointer;
   }  
 
-  body{
-background-image: url('https://www.chinadaily.com.cn/bizchina/img/2016top10/attachement/jpg/site1/20160217/b083fe96faa4182e64cf05.jpg');
-  }
+ 
   

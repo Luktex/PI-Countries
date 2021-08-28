@@ -77,12 +77,19 @@ dispatch(filterByActivities(e.target.value))
 
 return (
     <div className='principal'>
-        <button className='botoncreate'><Link to= '/activity'>Create a turistic activity</Link></button>
-        
+        <header>
+            <nav className="nav">
+                <SearchBar/>
+                <Paginado countriesPerPage = {countriesPerPage} allCountries = {allCountries.length} paginado = {paginado}/>
+                <button className='botoncreate'><Link to= '/activity'>Create a turistic activity</Link></button>
+            </nav>
+
+        </header>
         <h1 className='tituloPrincipal'>Countries of the world</h1>
         <button className='botonreload' onClick={e => {handleClick(e)}}>
             Reload countries
         </button>
+
         {/* <button onClick={e => {handleActivities(e)}}>.
         <Link to= '/activities'>Activities created</Link>
         </button>  */}
@@ -106,7 +113,7 @@ return (
                 <option key='Polar' value= 'Polar'>Antarctica</option>
             </select>
             <select className='selects' onChange={e => HandleByActivities(e)}>
-            <option >Activity</option>
+            <option key='activitys'>Activity</option>
             
                     {myCountry.map((e,i) => (
                     <option key={i} value={e}>{e}</option>  
@@ -115,8 +122,7 @@ return (
             </select>
             
 
-            <Paginado countriesPerPage = {countriesPerPage} allCountries = {allCountries.length} paginado = {paginado}/>
-            <SearchBar/>
+            
             
         <div className='contenedor-cartas'>
         {currentCountries?.map( (c) => {
