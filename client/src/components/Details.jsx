@@ -37,13 +37,13 @@ return(
                 <p>Area: {myCountry.area}km²</p>
                 <p>Population: {myCountry.population}</p>
                 <h3 className='Activities'>Activities: {!myCountry.activities[0]?'No activity created ' : myCountry.activities.map((el) => <li>{('Name: ') + el.name + (', ') + ('Duration(Weeks): ') + el.duration + (', ') + ('Difficulty: ') + el.difficulty + (', ') + ('Season: ') + el.season + ('.')}</li>)}</h3>
-
+            <Link to='/home'>
+                <button className='boton-detalle'>Back</button>
+            </Link>
             </div> : <img alt='Hola' src='https://3.bp.blogspot.com/-RzsAO993gtw/W1dFHnTUrGI/AAAAAAAAp-M/2_lCCA7eKJMWMqP2hOM794dEcLZGjoMewCEwYBhgL/s1600/world_flags_globe_2.gif'/>
 
         }
-        <Link to='/home'>
-            <button className='boton-detalle'>Back</button>
-        </Link>
+        
     </div>
 )
 }

@@ -3,6 +3,10 @@
     padding: 0;
     box-sizing: border-box;
 }
+a{
+    text-decoration: none;
+    color: black;
+}
 
 body {
     background-image: linear-gradient(120deg,#f6d365, #fda085);
@@ -12,30 +16,6 @@ body {
     text-align: center;
     
   }
-
-
-h1{
-   
-    color: white;
-    font-size: 30px;
-    border: 10px linear-gradient(120deg,#a5e759, #62e4d2); 
-   
-    
-    
-    
-    
-    
-}
-
-
-
-
-div h2{
-    text-decoration: none;
-    color:none;
-    text-shadow: black;
-    border-radius: 10px;
-}
 
 h3{
     color: white;
@@ -58,163 +38,168 @@ h3{
     color: black;
 }
 
+
 .cartas {
+    transition: all 0.5s;
     
-    border: 10px linear-gradient(120deg,#4d7de4, #6136b1); 
+}
+.cartas:hover {
     border-radius: 25px;
     margin: 10px;
-    background-color: rgb(90, 8, 241);
+    background-color:#70adfc;
+    transition: all 0.5s ease-out;
+    
+    
 }
-
 
 
 .cards{
     color: white;
-    text-decoration: none;
-
+    list-style-type: none;
     
 }
 .h2card{
-    text-decoration: none;
+    list-style-type: none;
     color: white
 }
 
-.botoncreate {
-    position: fixed;
-    right: 0px;
-    border-radius: 10px;
-    top: 10px;
-    cursor: pointer;
-    background-color: white;
-    color: white;
-    border: 10px linear-gradient(120deg,#4d7de4, #6136b1); 
-    font-size: 15px;
-}
 
-.search{
-    background-color: white;
-    border: 5px linear-gradient(120deg,#4d7de4, #6136b1); 
+.tituloPrincipal{
+    
+    cursor: pointer;
+    border-style: solid;
+    border-color: white;
+    
     
 }
-
-
-.boton-search{
-    cursor: pointer;
-    background-color: white;
-    color: black;
-    border: 0px linear-gradient(120deg,#4d7de4, #6136b1); 
-    font-size: 15px;
-    text-decoration: none!important;
-}
-
-
-
-
 
 
 .number {
     border-width: 8px;
-    border-style: solid;
+    font-size: 15px;
     border-color: white;
-    box-shadow: 200px 0 white inset;
-    margin: 2px;
+    
+    margin: 10px;
     cursor: pointer;
-    border-radius: 10px;
-    color: black;
+    border-radius: 20px;
+    color: white;
     
     
-   
+    cursor: pointer;
     
+}
+.number:hover{
+    transition: all 0.3s;
+    
+}
+
+.grid{
+display: grid;
+
+grid-template-columns: 20% 33% 80%;
 }
 .paginado {
-    top: 10px;
-    left: 300px;
-    position: fixed;
-    justify-content: center;
-    background-color: white;
-    color: white;
-    border: 10px linear-gradient(120deg,#4d7de4, #6136b1); 
+    left: 10px;
     font-size: 15px;
+    margin-top: 8px;
+    transition: all 0.3s ease;
+}
+.paginado:hover{
+    transition: all 0.3s ease;
+    background: black;
+    border-radius: 10px;
+}
 
+.botoncreate{
+
+}
+
+.search{
+    display: flex; 
     
 }
 
-
-.botonreload{
-    cursor: pointer;
-    background-color: white;
-    color: black;
-    border: 10px linear-gradient(120deg,#4d7de4, #6136b1); 
-    font-size: 15px;
-}
-select{
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    outline: none;
+.search-input{
     border: none;
+    width: 120px;
+}
 
+.boton-search{
+    border: none;
+    border-radius: 0px;
+    width: 70px;
+}
+
+.nav{
+    
+    display: flex;
+    
+    max-width: 1450px;
+    margin: 0 auto;
+    
 }
 
 .select{
     margin: 1rem;
     position: relative;
     overflow: hidden;
-
+    border: none;
 }
 
 select{
-    color: #ff6f47;
-    width: 10rem;
+    background-color: rgb(255, 255, 255);
+    width: 12rem;
     cursor: pointer;
-    padding: 1rem;
-    
-}
-.button{
-    border-radius: 10px;
+    padding: 0.5rem;
+    transition: all 0.3s ease;
 }
 
-
-
-.boton-detalle{
-    cursor: pointer;
-    background-color: white;
-    color: black;
-    border: 10px linear-gradient(120deg,#4d7de4, #6136b1); 
-    font-size: 15px;
-}
-
-
-.boton-home-create{
-    cursor: pointer;
-    background-color: white;
-    color: black;
-    border: 10px linear-gradient(120deg,#4d7de4, #6136b1);
-    font-size: 15px;
+select:hover{
+    transition: all 0.3s ease;
+   
 }
 
 .create{
-    background-color: yellowgreen;
+    background-color: #f6d365;
     text-align: center;
-    display: inline-block;
+    
     border: 10px linear-gradient(120deg,#4d7de4, #6136b1); 
 
-    
 }
 
-header{
-    background: tomato;
+.tituloCreate{
+    display: block;
+    color: white;
+    cursor: pointer;
+    border-style: solid;
+   
+    background-color: #f6d365;
+    transition: all 0.5s ease;
+    
 }
-.nav{
-    position: fixed;
-    background: tomato;
+.tituloCreate:hover{
+    background-color: #fda085;
+    
+    border-radius: 20px;
+    transition: all 0.5s ease;
 }
 
 .card-detail{
-    text-decoration: none;
+    
     color: black;
     background-color: white;
-    opacity: 98%;
+    opacity: 100%;
+    justify-content: left;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.card-detail:hover{
+    border-radius: 50px;
+    color: black;
+    transition: all 0.3s ease;
+    background: #65b0f6;
+    
 }
 
 .dif-create{
@@ -225,4 +210,22 @@ header{
 }
 .sea-create{
     width: 143px;
+}
+
+button{
+    color:black;
+    font-size: 15px;
+    border: none;
+    background: white;
+    height: 2rem;
+    width: 10rem;
+    transition: all 0.5s ease;
+    
+}
+
+button:hover{
+    
+    background: linear-gradient(120deg,#f6d365, #fda085);
+    cursor: pointer;
+    transition: all 0.5s ease;
 }

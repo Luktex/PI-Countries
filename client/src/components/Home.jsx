@@ -77,18 +77,18 @@ dispatch(filterByActivities(e.target.value))
 
 return (
     <div className='principal'>
-        <header>
-            <nav className="nav">
-                <SearchBar/>
-                <Paginado countriesPerPage = {countriesPerPage} allCountries = {allCountries.length} paginado = {paginado}/>
-                <button className='botoncreate'><Link to= '/activity'>Create a turistic activity</Link></button>
-            </nav>
+        <div className="grid">
+            <div className="nav">
+            <SearchBar/>
+            
+            <Paginado countriesPerPage = {countriesPerPage} allCountries = {allCountries.length} paginado = {paginado}/>
+             
+            <button className='botoncreate'><Link to= '/activity' >Create a turistic activity</Link></button>
+            </div>
 
-        </header>
-        <h1 className='tituloPrincipal'>Countries of the world</h1>
-        <button className='botonreload' onClick={e => {handleClick(e)}}>
-            Reload countries
-        </button>
+        </div>
+        <h1 className='tituloPrincipal' onClick={() => dispatch(getCountries(orderByName('asc')))}>Countries of the world</h1>
+        
 
         {/* <button onClick={e => {handleActivities(e)}}>.
         <Link to= '/activities'>Activities created</Link>
@@ -99,12 +99,12 @@ return (
                 <option key='desc' value= 'desc'>Z-A</option>
             </select>
             <select className='selects' onChange={e => handlePopu(e)}>
-                <option key='popu' value= 'popu'>Population min-max</option>
-                <option key='popu2' value= 'popu2'>Population max-min</option>
+                <option key='popu' value= 'popu'>Population: Lower First </option>
+                <option key='popu2' value= 'popu2'>Population: Higher first </option>
             
             </select>
             <select className='selects' onChange={e => handleFilterRegion(e)}>
-                <option key='All' value= 'All'>All</option>
+                <option key='All' value= 'All'>All continents</option>
                 <option key='Americas' value= 'Americas'>Americas</option>
                 <option key='Europe' value= 'Europe'>Europe</option>
                 <option key='Asia' value= 'Asia'>Asia</option>

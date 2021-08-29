@@ -7,7 +7,7 @@ const Paginado = ({ countriesPerPage, allCountries, paginado }) => {
   }
 
   return (
-    <nav>
+    <div>
       <ul className='paginado'>
         {pageNumbers.map((number,i) => (
           
@@ -17,7 +17,7 @@ const Paginado = ({ countriesPerPage, allCountries, paginado }) => {
           
         ))}
       </ul>
-    </nav>
+    </div>
   );
 };
 

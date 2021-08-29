@@ -63,7 +63,7 @@ function handleSubmit(e){
 
     return (
         <div >
-            <button className='boton-home-create'><Link to= '/home'>Home</Link></button>
+            <Link to="/home"><h1 className='tituloCreate'>Countries of the world</h1></Link>
             <h1>Create your activity!</h1>
             <form className="create" onSubmit={(e) => handleSubmit(e)}>
                 <div>
